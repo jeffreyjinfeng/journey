@@ -1,0 +1,9 @@
+----------------------------------------------------
+Project Name: flight
+content: a mock flight reservation website that allow registered users to reverse flight and hotel with shopping cart
+
+tech: Java, jsp and servlets, MySQL, SQL, JQuery, Ajax
+
+Date: April 2014
+
+
