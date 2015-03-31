@@ -1,0 +1,74 @@
+CREATE DATABASE hw2;
+USE hw2;
+ 
+CREATE TABLE Accounts
+   (
+                ACCOUNTID INT NOT NULL,
+                HOLDERNAME VARCHAR(20),
+                ROUTINGNUMBER INT,
+                BALANCE DOUBLE,
+                CONSTRAINT ACCOUNTS_PK PRIMARY KEY (ACCOUNTID));
+ 
+ 
+  CREATE TABLE Bookings
+   (          
+                BOOKINGID INT NOT NULL,
+                niner_id VARCHAR(20),
+                FLIGHTID VARCHAR(20),
+                DATE VARCHAR(20),
+                NUMBEROFSEATS INT,
+                ACCOUNTID INT,
+                TOTALCOST INT,
+                CONSTRAINT BOOKINGS_PK PRIMARY KEY (BOOKINGID));
+ 
+ 
+  CREATE TABLE Flights
+   (          
+                FLIGHTNUMBER INT NOT NULL,
+                OPERATOR VARCHAR(20) NOT NULL,
+                SOURCE VARCHAR(20) NOT NULL,
+                DESTINATION VARCHAR(20),
+                SEATS_TOTAL INT,
+                SEATS_TAKEN INT,
+                COST DOUBLE,
+                DEPARTURE VARCHAR(20),
+                ARRIVAL VARCHAR(20),
+                DATE VARCHAR(20),
+                CONSTRAINT FLIGHTS_PK PRIMARY KEY (FLIGHTNUMBER));
+ 
+  CREATE TABLE Users
+   (
+                niner_id VARCHAR(20) NOT NULL,
+                PASSWORD VARCHAR(20) NOT NULL,
+                EMAIL VARCHAR(50),
+                DOB VARCHAR(20),
+                CONSTRAINT USERS_PK PRIMARY KEY (niner_id));
+
+  CREATE TABLE PACKAGES
+   (PACKAGEID INT NOT NULL,
+    DESTINATION VARCHAR(20),
+    DESCRIPTION VARCHAR(20),
+    COST DOUBLE,
+    CONSTRAINT PACKAGES_PK PRIMARY KEY (PACKAGEID));
+
+    CREATE TABLE BookedFlights
+                (
+                niner_id VARCHAR(20) NOT NULL,
+                FBNUM INT NOT NULL,
+                DETAILS text,
+                DATE VARCHAR(20),
+                ACCOUNT VARCHAR(20),
+                TOTALCOST INT,
+                CONSTRAINT FBNUM_PK PRIMARY KEY (FBNUM),
+                CONSTRAINT niner_FK foreign Key (niner_id) References users(niner_id)
+                );
+ 
+ 
+INSERT INTO flights(FLIGHTNUMBER, OPERATOR, SOURCE, DESTINATION, SEATS_TOTAL, SEATS_TAKEN, DEPARTURE, ARRIVAL, COST, DATE  ) Values(121, "Delta", "Charlotte", "Atlanta", 50, 0, "12:00am", "1:00am", 100.00, "03/02/2014");
+INSERT INTO flights(FLIGHTNUMBER, OPERATOR, SOURCE, DESTINATION, SEATS_TOTAL, SEATS_TAKEN, DEPARTURE, ARRIVAL, COST, DATE  ) Values(341, "Delta", "Charlotte", "Atlanta", 34, 32, "11:00am", "4:00pm", 100.00, "03/01/2014");
+INSERT INTO flights(FLIGHTNUMBER, OPERATOR, SOURCE, DESTINATION, SEATS_TOTAL, SEATS_TAKEN, DEPARTURE, ARRIVAL, COST, DATE ) Values(145, "Delta", "Charlotte", "Atlanta", 175, 0, "5:00am", "9:30am", 100.00, "03/01/2014");
+
+INSERT INTO PACKAGES(PACKAGEID, DESTINATION, DESCRIPTION, COST ) values(111, "Atlanta", "HOTEL and CAR", "50");
+INSERT INTO PACKAGES(PACKAGEID, DESTINATION, DESCRIPTION, COST ) values(222, "Charlotte", "HOTEL and CAR", "30");
+
+INSERT INTO Accounts(ACCOUNTID, HOLDERNAME, ROUTINGNUMBER, BALANCE ) values(12345, "jinfeng", "12345", 10000);
